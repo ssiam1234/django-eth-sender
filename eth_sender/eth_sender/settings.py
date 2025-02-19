@@ -33,7 +33,7 @@ SECRET_KEY = 'django-insecure-4nzb66nogztb&es)ct_=2@j1d$0ptn8yvozj&o%u8edm-c_-il
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://ethsender.onrender.com']
+ALLOWED_HOSTS = ['ethsender.onrender.com']
 
 
 # Application definition
