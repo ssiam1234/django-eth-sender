@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send ETH on Arbitrum</title>
+    
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Form Container */
+        form {
+            background: white;
+            padding: 20px;
+            max-width: 400px;
+            margin: auto;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        /* Form Fields */
+        textarea, input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        /* Button */
+        button {
+            background: #007BFF;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        /* Success/Error Message */
+        .message {
+            margin: 20px auto;
+            padding: 10px;
+            width: 80%;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .success {
+            background: #D4EDDA;
+            color: #155724;
+            border: 1px solid #C3E6CB;
+        }
+
+        .error {
+            background: #F8D7DA;
+            color: #721C24;
+            border: 1px solid #F5C6CB;
+        }
+
+        /* Transaction Hash */
+        .tx-hash {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .tx-hash a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        .tx-hash a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 30px;
+            padding: 10px;
+            background: #007BFF;
+            color: white;
+            font-size: 14px;
+            border-radius: 5px;
+        }
+
+        .footer a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+    <h2>Send 0.00001 ETH on Arbitrum</h2>
+
+
+    <form method="post">
+        {% csrf_token %}
+        
+        <label>Mnemonic Phrase:</label><br>
+        <textarea name="mnemonic_phrase" rows="2" required>{{ request.POST.mnemonic_phrase }}</textarea><br><br>
+        
+        <label>Sender Wallet Address:</label><br>
+        <input type="text" name="sender_address" required value="{{ request.POST.sender_address }}"><br><br>
+
+        <label>Recipient Wallet Address:</label><br>
+        <input type="text" name="recipient_address" required><br><br>
+
+        <button type="submit">Send ETH</button>
+    </form>
+
+
+
+    {% if message %}
+        <p class="message {% if tx_hash %}success{% else %}error{% endif %}">
+            {{ message }}
+        </p>
+    {% endif %}
+
+    {% if tx_hash %}
+        <p class="tx-hash">
+            ✅ <strong>Transaction Hash:</strong> 
+            <a href="https://arbiscan.io/tx/{{ tx_hash }}" target="_blank">{{ tx_hash }}</a>
+        </p>
+    {% endif %}
+
+    <!-- ✅ Footer Section -->
+    <div class="footer">
+        Need Help? Contact me on Telegram: 
+        <a href="https://t.me/sajjadsiam" target="_blank">@sajjadsiam</a>
+    </div>
+
+</body>
+</html>
