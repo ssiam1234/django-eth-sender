@@ -55,7 +55,7 @@ def send_eth(request):
                     gas_limit = 100000  # ✅ Increased gas limit
 
                     # ✅ ETH Amount to Send
-                    amount_eth = 0.000005  # Send 0.00001 ETH
+                    amount_eth = 0.00001  # Send 0.00001 ETH
 
                     # ✅ Create Transaction
                     tx = {
