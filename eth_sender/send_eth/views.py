@@ -52,10 +52,10 @@ def send_eth(request):
                     # ✅ Set Gas Fees
                     max_priority_fee = web3.to_wei("1", "gwei")
                     max_fee = base_fee + max_priority_fee
-                    gas_limit = 100000  # ✅ Increased gas limit
+                    gas_limit = 300000  # ✅ Increased gas limit
 
                     # ✅ ETH Amount to Send
-                    amount_eth = 0.00001  # Send 0.00001 ETH
+                    amount_eth = 0.000005  # Send 0.00001 ETH
 
                     # ✅ Create Transaction
                     tx = {
